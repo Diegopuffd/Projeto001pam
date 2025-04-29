@@ -1,0 +1,22 @@
+{
+    "name": "App projeto 02",
+    "short_name": "P01",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#fffffff",
+    "theme_color": "#fffffff",
+    "icones":[
+
+        {
+            "src":"/icones/icone_128.png",
+            "sizes":"128x128",
+            "type":"image/png"
+        },
+        {
+            "src":"/icones/icone_512.png",
+            "sizes":"512x512",
+            "type":"image/png"  
+        }
+    ]
+
+}
