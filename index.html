@@ -11,12 +11,82 @@
         <link rel="manifest" href="./json/manifest.json">
         <script defer src="./js/main.js"></script>
         <!-- <script src="./js/app.js" defer></script> -->
+         <link rel="stylesheet" href="css/boot">
     </head>
 
     <body id="bg">
         <h1>Exemplo de Aplicativo PWA</h1>
         <p>Você pode instalar este site como um app no seu dispositivo.</p>
         <button onclick="mudacor()" class="botao">MUDAR COR</button>
+
+        <div class="todo-container">
+            <h2>Lista de Tarefas</h2>
+            <input type="text" id="nova-tarefa" placeholder="Adicionar nova tarefa">
+            <button onclick="adicionarTarefa()" class="botao">Adicionar</button>
+            <ul id="lista-tarefas"></ul>
+        </div>
+        <script>
+        function adicionarTarefa() {
+            const input = document.getElementById('nova-tarefa');
+            const texto = input.value.trim();
+            if (texto) {
+                const ul = document.getElementById('lista-tarefas');
+                const li = document.createElement('li');
+                li.textContent = texto;
+                li.onclick = function() { this.classList.toggle('concluida'); };
+                const btn = document.createElement('button');
+                btn.textContent = 'Remover';
+                btn.onclick = function(e) {
+                    e.stopPropagation();
+                    ul.removeChild(li);
+                };
+                li.appendChild(btn);
+                ul.appendChild(li);
+                input.value = '';
+            }
+        }
+        </script>
+        <style>
+        .todo-container {
+            margin-top: 30px;
+            max-width: 400px;
+            background: #f8f8ff;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        #nova-tarefa {
+            width: 70%;
+            padding: 6px;
+            margin-right: 5px;
+        }
+        #lista-tarefas {
+            list-style: none;
+            padding: 0;
+            margin-top: 15px;
+        }
+        #lista-tarefas li {
+            padding: 8px 5px;
+            margin-bottom: 8px;
+            background: #e6e6fa;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+        #lista-tarefas li.concluida {
+            text-decoration: line-through;
+            color: #888;
+        }
+        #lista-tarefas button {
+            background: #8b008b;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            padding: 3px 8px;
+            cursor: pointer;
+        }
+        </style>
     </body>
 
 </html>
